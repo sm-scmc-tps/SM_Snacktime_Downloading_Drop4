@@ -1,0 +1,345 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Sharepoint_CheckSubFolder" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uma="clr-namespace:UiPath.MicrosoftOffice365.Activities;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umaf="clr-namespace:UiPath.MicrosoftOffice365.Activities.Files;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umafe="clr-namespace:UiPath.MicrosoftOffice365.Activities.Files.Enums;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umafm="clr-namespace:UiPath.MicrosoftOffice365.Activities.Files.Models;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:umfm="clr-namespace:UiPath.MicrosoftOffice365.Files.Models;assembly=UiPath.MicrosoftOffice365" xmlns:umsm="clr-namespace:UiPath.MicrosoftOffice365.Sharepoint.Models;assembly=UiPath.MicrosoftOffice365" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.MicrosoftOffice365.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_SubFolder" Type="InArgument(umfm:O365DriveRemoteItem)" />
+    <x:Property Name="in_SearchFolder" Type="InArgument(x:String)" />
+    <x:Property Name="out_SearchedFolder" Type="OutArgument(umfm:O365DriveRemoteItem)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>Sharepoint_CheckSubFolder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Files.Models</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>Microsoft.Graph</x:String>
+      <x:String>UiPath.Shared.Activities.Utils</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Files.Enums</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Enums</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Enums</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Files.Filters</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Sharepoint.Filters</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Contracts</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Sharepoint.Contracts</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Sharepoint.Models</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Sharepoint.Models.Filters</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Sharepoint.Contracts.Enums</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Filters</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Files.Models</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Files.Contracts</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+      <x:String>UiPath.MicrosoftOffice365.Activities.Files</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.MicrosoftOffice365</x:String>
+      <x:String>System.Numerics</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>Microsoft.Graph.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.Graph</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Linq.Async.Queryable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText=" - DESCRIPTION: Check and Create Sub folder in sharepoint.&#xA; - PRE-CONDITION. Check Sub folder exist in sharepoint &#xA; - POST ACTION. Sub folder created and checked" DisplayName="Sharepoint_CheckSubFolder" sap:VirtualizedContainerService.HintSize="708.8000000000001,2381.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="umfm:O365DriveRemoteItem[]" Name="arr_Folders" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage sap2010:Annotation.AnnotationText="Log mesage the starting of the execution" DisplayName="Log Message Sharepoint_CheckSubFolder Started" sap:VirtualizedContainerService.HintSize="505.6,205.6" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Sharepoint_CheckSubFolder Starting ....&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <uma:Office365ApplicationScope BrowserItemFriendlyName="{x:Null}" BrowserItemFullPath="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserRuntimeItemFriendlyName="{x:Null}" BrowserRuntimeItemFullPath="{x:Null}" BrowserRuntimeItemId="{x:Null}" BrowserRuntimeParentItemId="{x:Null}" CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" Connector="{x:Null}" ContinueOnError="{x:Null}" Folder="{x:Null}" ImpersonatedUserEmailAddress="{x:Null}" ManualRuntimeItemFullPath="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" Account="Please select an account." sap2010:Annotation.AnnotationText="SM Microsoft Scope" ApplicationId="[in_Config(&quot;Snacktime_Sharepoint_ApplicationID&quot;).ToString]" ApplicationSecret="[in_Config(&quot;Snacktime_Sharepoint_ApplicationSecret&quot;).ToString]" AuthenticationType="InteractiveToken" ConfigLocation="PropertiesPanel" DataStoreLocation="DISK" DisplayName="Microsoft 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="505.6,1897.6" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="UiPath" RuntimeItemInputMode="Browse" TenantId="[in_Config(&quot;Snacktime_Sharepoint_Tenant&quot;).ToString]" Timeout="[CInt(in_Config(&quot;Snacktime_Sharepoint_Timeout&quot;))]" UseConnectionService="False">
+      <uma:Office365ApplicationScope.AuthenticationScopes>
+        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+      </uma:Office365ApplicationScope.AuthenticationScopes>
+      <uma:Office365ApplicationScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ParentScope" />
+          </ActivityAction.Argument>
+          <Sequence sap2010:Annotation.AnnotationText="Do the checking of sub folder exist and creating sub folder" DisplayName="Do Check or Create SubFolder" sap:VirtualizedContainerService.HintSize="502.4,1647.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="IsFound" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <umaf:GetFileListConnections AllColumns="{x:Array Type=umsm:Office365SharepointListColumnSlim}" BrowserDriveName="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserSiteUrl="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" DynamicMetadataFilter="{x:Null}" Filter="{x:Null}" FreeTextFilter="{x:Null}" ItemIdBackup="{x:Reference __ReferenceID0}" ManualEntryDriveName="{x:Null}" ManualEntryItemFullPath="{x:Null}" ManualEntryItemId="{x:Null}" ManualEntryItemRelativePath="{x:Null}" ManualEntryItemUrl="{x:Null}" ManualEntrySiteUrl="{x:Null}" MetadataFilter="{x:Null}" QueryFilter="{x:Null}" SharepointLibraryItemFriendlyName="{x:Null}" SharepointListId="{x:Null}" SharepointSiteUrl="{x:Null}" SimpleSearch="{x:Null}" sap2010:Annotation.AnnotationText="Getting the sub folder list" AuthScopesInvalid="False" BrowserSpecificUrl="https://smworkplace-my.sharepoint.com/personal/norman_batrina_v_smsupermalls_com/Documents" DisplayName="Get Sub Folder List" sap:VirtualizedContainerService.HintSize="468.8,153.6" sap2010:WorkflowViewState.IdRef="GetFileListConnections_2" IncludeSubfolders="False" Item="[in_SubFolder]" ItemSelectionMode="UseExisting" MaxResults="200" Result="[arr_Folders]" SearchMode="UseSimple" TrimDuplicates="False" UseConnectionService="False" WhatToReturn="[UiPath.MicrosoftOffice365.Enums.FindFilesAndFoldersResultType.Folders]" WorkingWithDocumentLibrary="False">
+              <umaf:GetFileListConnections.DriveItemArgument>
+                <umafm:DriveItemArgument BrowserDriveId="{x:Null}" BrowserDriveName="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentDriveId="{x:Null}" BrowserParentDriveName="{x:Null}" BrowserParentItemFriendlyName="{x:Null}" BrowserParentItemId="{x:Null}" BrowserParentPath="{x:Null}" BrowserSiteUrl="{x:Null}" ConnectionDescriptor="{x:Null}" FullPathHint="{x:Null}" ManualEntryDriveName="{x:Null}" ManualEntryItemFullPath="{x:Null}" ManualEntryItemId="{x:Null}" ManualEntryItemRelativePath="{x:Null}" ManualEntryItemUrl="{x:Null}" ManualEntrySiteUrl="{x:Null}" ReferenceId="{x:Null}" BrowserSpecificUrl="https://smworkplace-my.sharepoint.com/personal/norman_batrina_v_smsupermalls_com/Documents" ConnectionKey="eyJBY2NvdW50IjoiTm9ybWFuLkJhdHJpbmFAdi5zbXN1cGVybWFsbHMuY29tIiwiT0F1dGhBcHBEYXRhIjp7IkFwcGxpY2F0aW9uSWQiOiIiLCJUZW5hbnRJZCI6IiJ9LCJDbGllbnRTZWNyZXQiOm51bGwsIlBhc3N3b3JkIjpudWxsLCJVc2VyTmFtZSI6Ik5vcm1hbi5CYXRyaW5hQHYuc21zdXBlcm1hbGxzLmNvbSIsIkNlcnRpZmljYXRlQXNCYXNlNjQiOm51bGwsIkNlcnRpZmljYXRlUGFzc3dvcmQiOm51bGwsIkVudmlyb25tZW50IjoxLCJNb2RlIjowLCJTY29wZXMiOlsiU2l0ZXMuUmVhZFdyaXRlLkFsbCJdLCJUaW1lb3V0TXMiOjYwMDAwLCJFbWFpbEFkZHJlc3MiOm51bGwsIkNvbm5lY3Rpb25TZXJ2aWNlRGF0YSI6eyJDb25uZWN0aW9uQWNjb3VudE5hbWUiOm51bGwsIkNvbm5lY3Rpb25JZCI6bnVsbCwiQ29ubmVjdG9yIjpudWxsfSwiU3RvcmVLZXkiOiJESVNLOm9mZmljZTM2NS50b2tlbnMubXNhbGNhY2hlLmJpbjMiLCJTdG9yYWdlIjp7IkZpbGVQYXRoIjoib2ZmaWNlMzY1LnRva2Vucy5tc2FsY2FjaGUuYmluMyIsIkxvY2F0aW9uIjowfX0=" Item="[in_SubFolder]" ItemSelectionMode="UseExisting" ParentFullPathHint="">
+                  <umafm:DriveItemArgument.ItemIdBackup>
+                    <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="UseExisting">
+                      <usau:BackupSlot.BackupValues>
+                        <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="5">
+                          <InArgument x:TypeArguments="x:String">01DFLKIAF6Y2GOVW7725BZO354PWSELRRZ</InArgument>
+                          <InArgument x:TypeArguments="x:String">OneDrive</InArgument>
+                          <InArgument x:TypeArguments="x:String">b!KCGbi8FpMk2aQHbClkT15AIHZwYhyKNCmT9KwfRbxkvgzMjTozhzRandwmNllN62</InArgument>
+                          <InArgument x:TypeArguments="x:String">root</InArgument>
+                          <InArgument x:TypeArguments="x:String">https://smworkplace-my.sharepoint.com/personal/norman_batrina_v_smsupermalls_com/Documents</InArgument>
+                        </scg:List>
+                        <scg:List x:TypeArguments="x:Object" x:Key="ItemUrl" Capacity="1">
+                          <InArgument x:TypeArguments="x:String">https://smworkplace.sharepoint.com/sites/SCMCUIPathProjectTeam/Shared%20Documents/Forms/AllItems.aspx?csf=1&amp;web=1&amp;e=29edqZ&amp;CID=63ad8b88%2Dfcf8%2D4883%2Da5c0%2D3ffa53290c42&amp;FolderCTID=0x012000B01DAB8307FA0D40BA0CA9B1D7F94D81&amp;id=%2Fsites%2FSCMCUIPathProjectTeam%2FShared%20Documents%2FSCMC%20UI%20Path%20Project%20Team%2FDrop%201%5FMORS%5FIPAY%5FGCASH%5FCYBER%2FUAT%2FDrop%201%2FSales%20Audit%2DTest%20Data%2FGCASH%2FDaily%20Transaction%20Settlement%20Report&amp;viewid=3457d423%2Da4e5%2D4c29%2Dab63%2Ddd9839b1335e</InArgument>
+                        </scg:List>
+                      </usau:BackupSlot.BackupValues>
+                    </usau:BackupSlot>
+                  </umafm:DriveItemArgument.ItemIdBackup>
+                </umafm:DriveItemArgument>
+              </umaf:GetFileListConnections.DriveItemArgument>
+              <umaf:GetFileListConnections.FilterSelectionBackup>
+                <usau:BackupSlot x:TypeArguments="umafe:SearchSelectionMode" StoredValue="UseSimple">
+                  <usau:BackupSlot.BackupValues>
+                    <scg:Dictionary x:TypeArguments="umafe:SearchSelectionMode, scg:List(x:Object)" />
+                  </usau:BackupSlot.BackupValues>
+                </usau:BackupSlot>
+              </umaf:GetFileListConnections.FilterSelectionBackup>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </umaf:GetFileListConnections>
+            <Assign sap2010:Annotation.AnnotationText="Assigned IsFound Search Folder" DisplayName="Assign IsFound" sap:VirtualizedContainerService.HintSize="468.8,144.8" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Boolean">[IsFound]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Boolean">[arr_Folders.Any(Function(item) item.FullName = in_SearchFolder)]</InArgument>
+              </Assign.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Assign>
+            <If sap2010:Annotation.AnnotationText="Checking Sub Folder Exist&#xA;True: Sub Folder Found&#xA;False: Create Sub Folder" Condition="[IsFound]" DisplayName="If IsFound Sub Folder" sap:VirtualizedContainerService.HintSize="468.8,1257.6" sap2010:WorkflowViewState.IdRef="If_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="467.2,401.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap2010:Annotation.AnnotationText="Assigned the searched sub folder" DisplayName="Assign Searched Sub Folder" sap:VirtualizedContainerService.HintSize="433.6,144.8" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="umfm:O365DriveRemoteItem">[out_SearchedFolder]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="umfm:O365DriveRemoteItem">[arr_Folders.FirstOrDefault(Function(item) item.FullName = in_SearchFolder)]</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                  <ui:LogMessage sap2010:Annotation.AnnotationText="Logging the Sub Folder Found" DisplayName="Log Message Sub Folder Found" sap:VirtualizedContainerService.HintSize="433.6,196.8" sap2010:WorkflowViewState.IdRef="LogMessage_4" Message="[&quot;Found Folder for &quot; + in_SearchFolder]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:LogMessage>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="467.2,666.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="umfm:O365DriveRemoteItem" Name="FolderGet" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <umaf:GetFileFolderConnections BrowserDriveName="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserSiteUrl="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" ItemIdBackup="{x:Reference __ReferenceID1}" ManualEntryDriveName="{x:Null}" ManualEntryItemFullPath="{x:Null}" ManualEntryItemId="{x:Null}" ManualEntryItemRelativePath="{x:Null}" ManualEntryItemUrl="{x:Null}" ManualEntrySiteUrl="{x:Null}" sap2010:Annotation.AnnotationText="Getting the Sub Folder" AuthScopesInvalid="False" DisplayName="Get Sub Folder" sap:VirtualizedContainerService.HintSize="433.6,153.6" sap2010:WorkflowViewState.IdRef="GetFileFolderConnections_1" Item="[in_SubFolder]" ItemSelectionMode="UseExisting" Result="[FolderGet]" UseConnectionService="False">
+                    <umaf:GetFileFolderConnections.DriveItemArgument>
+                      <umafm:DriveItemArgument BrowserDriveId="{x:Null}" BrowserDriveName="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentDriveId="{x:Null}" BrowserParentDriveName="{x:Null}" BrowserParentItemFriendlyName="{x:Null}" BrowserParentItemId="{x:Null}" BrowserParentPath="{x:Null}" BrowserSiteUrl="{x:Null}" BrowserSpecificUrl="{x:Null}" ConnectionDescriptor="{x:Null}" FullPathHint="{x:Null}" ManualEntryDriveName="{x:Null}" ManualEntryItemFullPath="{x:Null}" ManualEntryItemId="{x:Null}" ManualEntryItemRelativePath="{x:Null}" ManualEntryItemUrl="{x:Null}" ManualEntrySiteUrl="{x:Null}" ReferenceId="{x:Null}" ConnectionKey="eyJBY2NvdW50IjoiTm9ybWFuLkJhdHJpbmFAdi5zbXN1cGVybWFsbHMuY29tIiwiT0F1dGhBcHBEYXRhIjp7IkFwcGxpY2F0aW9uSWQiOiIiLCJUZW5hbnRJZCI6IiJ9LCJDbGllbnRTZWNyZXQiOm51bGwsIlBhc3N3b3JkIjpudWxsLCJVc2VyTmFtZSI6Ik5vcm1hbi5CYXRyaW5hQHYuc21zdXBlcm1hbGxzLmNvbSIsIkNlcnRpZmljYXRlQXNCYXNlNjQiOm51bGwsIkNlcnRpZmljYXRlUGFzc3dvcmQiOm51bGwsIkVudmlyb25tZW50IjoxLCJNb2RlIjowLCJTY29wZXMiOlsiU2l0ZXMuUmVhZFdyaXRlLkFsbCJdLCJUaW1lb3V0TXMiOjYwMDAwLCJFbWFpbEFkZHJlc3MiOm51bGwsIkNvbm5lY3Rpb25TZXJ2aWNlRGF0YSI6eyJDb25uZWN0aW9uQWNjb3VudE5hbWUiOm51bGwsIkNvbm5lY3Rpb25JZCI6bnVsbCwiQ29ubmVjdG9yIjpudWxsfSwiU3RvcmVLZXkiOiJESVNLOm9mZmljZTM2NS50b2tlbnMubXNhbGNhY2hlLmJpbjMiLCJTdG9yYWdlIjp7IkZpbGVQYXRoIjoib2ZmaWNlMzY1LnRva2Vucy5tc2FsY2FjaGUuYmluMyIsIkxvY2F0aW9uIjowfX0=" Item="[in_SubFolder]" ItemSelectionMode="UseExisting" ParentFullPathHint="">
+                        <umafm:DriveItemArgument.ItemIdBackup>
+                          <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" x:Name="__ReferenceID1" StoredValue="UseExisting">
+                            <usau:BackupSlot.BackupValues>
+                              <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="5">
+                                <x:Null />
+                                <x:Null />
+                                <x:Null />
+                                <x:Null />
+                                <x:Null />
+                              </scg:List>
+                              <scg:List x:TypeArguments="x:Object" x:Key="ItemUrl" Capacity="1">
+                                <InArgument x:TypeArguments="x:String">https://smworkplace.sharepoint.com/sites/SCMCUIPathProjectTeam/Shared%20Documents/Forms/AllItems.aspx?csf=1&amp;web=1&amp;e=29edqZ&amp;CID=63ad8b88%2Dfcf8%2D4883%2Da5c0%2D3ffa53290c42&amp;FolderCTID=0x012000B01DAB8307FA0D40BA0CA9B1D7F94D81&amp;id=%2Fsites%2FSCMCUIPathProjectTeam%2FShared%20Documents%2FSCMC%20UI%20Path%20Project%20Team%2FDrop%201%5FMORS%5FIPAY%5FGCASH%5FCYBER%2FUAT%2FDrop%201%2FSales%20Audit%2DTest%20Data%2FGCASH%2FDaily%20Transaction%20Settlement%20Report&amp;viewid=3457d423%2Da4e5%2D4c29%2Dab63%2Ddd9839b1335e</InArgument>
+                              </scg:List>
+                            </usau:BackupSlot.BackupValues>
+                          </usau:BackupSlot>
+                        </umafm:DriveItemArgument.ItemIdBackup>
+                      </umafm:DriveItemArgument>
+                    </umaf:GetFileFolderConnections.DriveItemArgument>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </umaf:GetFileFolderConnections>
+                  <umaf:CreateFolderConnections BrowserDriveName="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentItemId="{x:Null}" BrowserSiteUrl="{x:Null}" ConnectionAccountName="{x:Null}" ConnectionId="{x:Null}" ContinueOnError="{x:Null}" ItemIdBackup="{x:Reference __ReferenceID2}" ManualEntryDriveName="{x:Null}" ManualEntryItemFullPath="{x:Null}" ManualEntryItemId="{x:Null}" ManualEntryItemRelativePath="{x:Null}" ManualEntryItemUrl="{x:Null}" ManualEntrySiteUrl="{x:Null}" sap2010:Annotation.AnnotationText="Creating Sub Folder" AuthScopesInvalid="False" ConflictResolution="Fail" DisplayName="Create Sub Folder" sap:VirtualizedContainerService.HintSize="433.6,257.6" sap2010:WorkflowViewState.IdRef="CreateFolderConnections_1" Item="[FolderGet]" ItemSelectionMode="UseExisting" NewFolderName="[in_SearchFolder]" Result="[out_SearchedFolder]" UseConnectionService="False">
+                    <umaf:CreateFolderConnections.DriveItemArgument>
+                      <umafm:DriveItemArgument BrowserDriveId="{x:Null}" BrowserDriveName="{x:Null}" BrowserItemFriendlyName="{x:Null}" BrowserItemId="{x:Null}" BrowserParentDriveId="{x:Null}" BrowserParentDriveName="{x:Null}" BrowserParentItemFriendlyName="{x:Null}" BrowserParentItemId="{x:Null}" BrowserParentPath="{x:Null}" BrowserSiteUrl="{x:Null}" BrowserSpecificUrl="{x:Null}" ConnectionDescriptor="{x:Null}" FullPathHint="{x:Null}" ManualEntryDriveName="{x:Null}" ManualEntryItemFullPath="{x:Null}" ManualEntryItemId="{x:Null}" ManualEntryItemRelativePath="{x:Null}" ManualEntryItemUrl="{x:Null}" ManualEntrySiteUrl="{x:Null}" ReferenceId="{x:Null}" ConnectionKey="eyJBY2NvdW50IjoiTm9ybWFuLkJhdHJpbmFAdi5zbXN1cGVybWFsbHMuY29tIiwiT0F1dGhBcHBEYXRhIjp7IkFwcGxpY2F0aW9uSWQiOiIiLCJUZW5hbnRJZCI6IiJ9LCJDbGllbnRTZWNyZXQiOm51bGwsIlBhc3N3b3JkIjpudWxsLCJVc2VyTmFtZSI6Ik5vcm1hbi5CYXRyaW5hQHYuc21zdXBlcm1hbGxzLmNvbSIsIkNlcnRpZmljYXRlQXNCYXNlNjQiOm51bGwsIkNlcnRpZmljYXRlUGFzc3dvcmQiOm51bGwsIkVudmlyb25tZW50IjoxLCJNb2RlIjowLCJTY29wZXMiOlsiU2l0ZXMuUmVhZFdyaXRlLkFsbCJdLCJUaW1lb3V0TXMiOjYwMDAwLCJFbWFpbEFkZHJlc3MiOm51bGwsIkNvbm5lY3Rpb25TZXJ2aWNlRGF0YSI6eyJDb25uZWN0aW9uQWNjb3VudE5hbWUiOm51bGwsIkNvbm5lY3Rpb25JZCI6bnVsbCwiQ29ubmVjdG9yIjpudWxsfSwiU3RvcmVLZXkiOiJESVNLOm9mZmljZTM2NS50b2tlbnMubXNhbGNhY2hlLmJpbjMiLCJTdG9yYWdlIjp7IkZpbGVQYXRoIjoib2ZmaWNlMzY1LnRva2Vucy5tc2FsY2FjaGUuYmluMyIsIkxvY2F0aW9uIjowfX0=" Item="[FolderGet]" ItemSelectionMode="UseExisting" ParentFullPathHint="">
+                        <umafm:DriveItemArgument.ItemIdBackup>
+                          <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" x:Name="__ReferenceID2" StoredValue="UseExisting">
+                            <usau:BackupSlot.BackupValues>
+                              <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="5">
+                                <InArgument x:TypeArguments="x:String">01DFLKIAF6Y2GOVW7725BZO354PWSELRRZ</InArgument>
+                                <InArgument x:TypeArguments="x:String">OneDrive</InArgument>
+                                <InArgument x:TypeArguments="x:String">b!KCGbi8FpMk2aQHbClkT15AIHZwYhyKNCmT9KwfRbxkvgzMjTozhzRandwmNllN62</InArgument>
+                                <InArgument x:TypeArguments="x:String">root</InArgument>
+                                <InArgument x:TypeArguments="x:String">https://smworkplace-my.sharepoint.com/personal/norman_batrina_v_smsupermalls_com/Documents</InArgument>
+                              </scg:List>
+                            </usau:BackupSlot.BackupValues>
+                          </usau:BackupSlot>
+                        </umafm:DriveItemArgument.ItemIdBackup>
+                      </umafm:DriveItemArgument>
+                    </umaf:CreateFolderConnections.DriveItemArgument>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </umaf:CreateFolderConnections>
+                  <ui:LogMessage sap2010:Annotation.AnnotationText="Logging the Creation of Sub Folder" DisplayName="Log Message Create Sub folder" sap:VirtualizedContainerService.HintSize="434,195" sap2010:WorkflowViewState.IdRef="LogMessage_5" Message="[&quot;Created Folder for &quot; + in_SearchFolder]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:LogMessage>
+                </Sequence>
+              </If.Else>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </uma:Office365ApplicationScope.Body>
+      <uma:Office365ApplicationScope.EmailAddress>
+        <InArgument x:TypeArguments="x:String" />
+      </uma:Office365ApplicationScope.EmailAddress>
+      <uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+        <usau:BackupSlot x:TypeArguments="umafe:EDriveItemMode" StoredValue="{x:Null}">
+          <usau:BackupSlot.BackupValues>
+            <scg:Dictionary x:TypeArguments="umafe:EDriveItemMode, scg:List(x:Object)" />
+          </usau:BackupSlot.BackupValues>
+        </usau:BackupSlot>
+      </uma:Office365ApplicationScope.RuntimeItemFullPathBackup>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uma:Office365ApplicationScope>
+    <ui:LogMessage sap2010:Annotation.AnnotationText="Log mesage the ending of the execution" DisplayName="Log Message Sharepoint_CheckSubFolder Ended" sap:VirtualizedContainerService.HintSize="506,195" sap2010:WorkflowViewState.IdRef="LogMessage_7" Message="[&quot;Sharepoint_CheckSubFolder Ended&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+  </Sequence>
+</Activity>

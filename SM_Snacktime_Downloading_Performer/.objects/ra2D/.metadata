@@ -1,0 +1,12 @@
+﻿{
+  "Name": "aStock on Posting Date(1)",
+  "Type": "App",
+  "Id": "ra2D5LKnyUSgfSJOdvOdXw",
+  "Reference": "Z57GptQRKkOLEUy_NhTXiA/ra2D5LKnyUSgfSJOdvOdXw",
+  "Created": "2025-08-01T03:02:44.4608901Z",
+  "Updated": "2025-08-01T03:02:44.4608901Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.11.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

@@ -1,0 +1,13 @@
+﻿{
+  "Name": "aStock on Posting Date(1)",
+  "Type": "Screen",
+  "Id": "YTBTgmrugU-FvcP5ufUnOA",
+  "Reference": "Z57GptQRKkOLEUy_NhTXiA/YTBTgmrugU-FvcP5ufUnOA",
+  "ParentRef": "Z57GptQRKkOLEUy_NhTXiA/CqkZw6mu7Eiq_C8CDl5MZA",
+  "Created": "2025-08-01T03:02:44.551438Z",
+  "Updated": "2025-08-01T03:02:44.551438Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.11.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

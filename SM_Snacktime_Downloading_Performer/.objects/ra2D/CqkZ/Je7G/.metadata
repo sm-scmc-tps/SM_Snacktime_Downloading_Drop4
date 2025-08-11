@@ -1,0 +1,13 @@
+﻿{
+  "Name": "Display Warehouse Stocks of Material(5)(1)",
+  "Type": "Screen",
+  "Id": "Je7G9zijEU6yJ7S47UGcAw",
+  "Reference": "Z57GptQRKkOLEUy_NhTXiA/Je7G9zijEU6yJ7S47UGcAw",
+  "ParentRef": "Z57GptQRKkOLEUy_NhTXiA/CqkZw6mu7Eiq_C8CDl5MZA",
+  "Created": "2025-08-06T01:45:01.8870994Z",
+  "Updated": "2025-08-06T01:45:01.8870994Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.11.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
