@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="6JQFgL0b802RA-1u2OcNGw" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="423, 666, 131, 33" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/ctxtDATUM-LOW' tooltip='Posting Date in the Document' /&gt;" Guid="eb467c03-e0c1-48ee-ad26-3eaaf5a9de64" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='Stock on Posting Date' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="3b54539caa0a62a520b7a22df2a62929.png" xmlns="">0ISF3d2Hu-EyJAfCF74BwDA</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">TypeInto</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>

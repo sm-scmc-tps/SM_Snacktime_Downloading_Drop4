@@ -1,0 +1,12 @@
+﻿{
+  "Name": "Display Warehouse Stocks of Material",
+  "Type": "App",
+  "Id": "D8tOC6A5ZkmBcdjZOH5_Bg",
+  "Reference": "wrDh2UdAREWqxgm4wT-2wA/D8tOC6A5ZkmBcdjZOH5_Bg",
+  "Created": "2025-07-30T05:53:58.541994Z",
+  "Updated": "2025-07-30T05:53:58.541994Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=24.10.11.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=25.4.0.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}

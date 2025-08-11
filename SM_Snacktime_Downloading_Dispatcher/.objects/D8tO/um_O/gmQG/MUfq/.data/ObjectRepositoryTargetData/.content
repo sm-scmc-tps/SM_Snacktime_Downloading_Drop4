@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ObjectRepositoryTargetData ContentHash="ym9NmDC99020PD2M0TCAQw" Reference="wrDh2UdAREWqxgm4wT-2wA/MUfqzIsUu0WJrEaRtz7O7w" xmlns="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ObjectRepositoryTargetData.Data>
+    <TargetAnchorable x:Key="TargetAnchorable" DesignTimeRectangle="723, 786, 131, 33" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;sap id='usr/ctxt*DAT*-HIGH' type='GuiCTextField' idx='1' /&gt;" Guid="474414e0-09f5-48d1-9c33-fdb05b8266ab" ScopeSelectorArgument="&lt;wnd app='saplogon.exe' cls='SAP_FRONTEND_SESSION' title='*' /&gt;" SearchSteps="Selector" Version="V4" Visibility="Interactive">
+      <imageRef attrName="InformativeScreenshot" originalValue="b3fe494a166ba4be52e23aa98cd3734d.png" xmlns="">0uGqmVcLDk0ecbDIWfXO9Nw</imageRef>
+    </TargetAnchorable>
+    <x:String x:Key="ActivityType">None</x:String>
+  </ObjectRepositoryTargetData.Data>
+</ObjectRepositoryTargetData>
